@@ -24,6 +24,9 @@
     "resources": ["icon.svg"],
     "matches": ["https://claude.ai/*"]
   }],
+  "action": {
+    "default_popup": "popup.html"
+  },
   "icons": {
     "48": "icon48.png",
     "128": "icon128.png"
