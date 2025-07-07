@@ -5,22 +5,138 @@
 		<title>Claude Project Updater</title>
 		<style>
 			body {
-				width: 300px;
-				padding: 10px;
+				width: 350px;
+				padding: 15px;
 				font-family: Arial, sans-serif;
+				font-size: 14px;
+			}
+			h2 {
+				margin: 0 0 10px 0;
+				font-size: 18px;
+			}
+			.section {
+				margin-bottom: 15px;
+				padding: 10px;
+				border: 1px solid #e0e0e0;
+				border-radius: 5px;
+				background: #f9f9f9;
+			}
+			.section h3 {
+				margin: 0 0 8px 0;
+				font-size: 14px;
+				font-weight: bold;
 			}
 			button {
 				width: 100%;
-				margin-top: 10px;
+				margin-top: 8px;
+				padding: 8px;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 14px;
+			}
+			.primary-btn {
+				background: #007cba;
+				color: white;
+			}
+			.primary-btn:hover {
+				background: #005a87;
+			}
+			.secondary-btn {
+				background: #6c757d;
+				color: white;
+			}
+			.secondary-btn:hover {
+				background: #545b62;
+			}
+			.danger-btn {
+				background: #dc3545;
+				color: white;
+			}
+			.danger-btn:hover {
+				background: #c82333;
+			}
+			input {
+				width: 100%;
+				padding: 8px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				font-size: 14px;
+				box-sizing: border-box;
+			}
+			.status {
+				margin-top: 8px;
+				padding: 8px;
+				border-radius: 4px;
+				font-size: 13px;
+			}
+			.status.success {
+				background: #d4edda;
+				color: #155724;
+				border: 1px solid #c3e6cb;
+			}
+			.status.error {
+				background: #f8d7da;
+				color: #721c24;
+				border: 1px solid #f5c6cb;
+			}
+			.status.info {
+				background: #d1ecf1;
+				color: #0c5460;
+				border: 1px solid #bee5eb;
+			}
+			.token-status {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				margin-bottom: 8px;
+			}
+			.status-indicator {
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+			}
+			.status-indicator.valid {
+				background: #28a745;
+			}
+			.status-indicator.invalid {
+				background: #dc3545;
+			}
+			.status-indicator.unknown {
+				background: #6c757d;
+			}
+			.small-text {
+				font-size: 12px;
+				color: #666;
+				margin-top: 5px;
 			}
 		</style>
 	</head>
 	<body>
 		<h2>Claude Project Updater</h2>
-		<p>
-			Update your Claude project with files from a public GitHub repository.
-		</p>
-		<button id="updateButton">Update Project</button>
+		
+		<div class="section">
+			<h3>GitHub Access Token</h3>
+			<div class="token-status">
+				<div id="tokenIndicator" class="status-indicator unknown"></div>
+				<span id="tokenStatusText">Not configured</span>
+			</div>
+			<input type="password" id="tokenInput" placeholder="Enter GitHub personal access token" />
+			<div class="small-text">
+				Required for private repositories. Token should have 'repo' scope.
+			</div>
+			<button id="saveTokenBtn" class="primary-btn">Save Token</button>
+			<button id="clearTokenBtn" class="danger-btn" style="display: none;">Clear Token</button>
+		</div>
+		
+		<div class="section">
+			<h3>Project Sync</h3>
+			<p style="margin: 0 0 8px 0; font-size: 13px;">
+				Update your Claude project with files from a GitHub repository.
+			</p>
+			<button id="updateButton" class="secondary-btn">Update Project</button>
+		</div>
+		
 		<div id="status"></div>
 
 		<script src="popup.js"></script>

@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Claude Project Updater",
   "version": "1.2",
-  "description": "Update Claude.ai project from public GitHub repositories",
+  "description": "Update Claude.ai project from GitHub repositories (public and private with access token)",
   "permissions": [
     "activeTab",
     "storage"
