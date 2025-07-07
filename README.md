@@ -1,6 +1,6 @@
 # Claude Project Updater
 
-A Chrome extension that syncs your Claude.ai projects with public GitHub repositories. Simply add a GitHub repo URL to your project description, and sync files with a single click.
+A Chrome extension that syncs your Claude.ai projects with GitHub repositories (both public and private). Simply add a GitHub repo URL to your project description, and sync files with a single click.
 
 ## Installation
 
@@ -11,9 +11,29 @@ A Chrome extension that syncs your Claude.ai projects with public GitHub reposit
 
 ## Usage
 
+### For Public Repositories
 1. Add a GitHub URL to your Claude project description
 2. A sync button will appear above the description
 3. Click to sync files
+
+### For Private Repositories
+1. **Configure GitHub Access Token:**
+   - Click the extension icon in your browser toolbar
+   - In the popup, enter your GitHub personal access token
+   - Click "Save Token"
+   - The token will be validated and stored securely
+
+2. **Create a GitHub Personal Access Token:**
+   - Go to GitHub Settings > Developer settings > Personal access tokens > Tokens (classic)
+   - Click "Generate new token"
+   - Give it a descriptive name (e.g., "ClaudeSync Extension")
+   - Select the `repo` scope (full control of private repositories)
+   - Copy the generated token and paste it into the extension popup
+
+3. **Sync your private repository:**
+   - Add your private GitHub repo URL to your Claude project description
+   - A sync button will appear above the description
+   - Click to sync files (now works with private repos!)
 
 ## File Filtering
 
@@ -39,11 +59,25 @@ node_modules/   # excludes an entire folder
 - Folders must end with a forward slash (/)
 - Lines starting with # are comments
 
+## Security
+
+- GitHub access tokens are stored securely using Chrome's storage API
+- Tokens are only used for GitHub API authentication
+- Tokens are never logged or transmitted to third parties
+- You can clear your token at any time from the extension popup
+
+## Token Permissions
+
+For private repository access, your GitHub token needs:
+- `repo` scope: Full control of private repositories
+
+The extension will validate your token and show its status in the popup.
+
 ## Limitations
 
-- Works only with public GitHub repositories
 - Some file types may not be supported by Claude
 - Large files (>1MB) may fail to sync
+- GitHub API rate limits apply (higher limits with authentication)
 
 ## Development
 
